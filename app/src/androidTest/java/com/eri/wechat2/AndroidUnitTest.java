@@ -6,6 +6,6 @@ import com.eri.wechat2.utils.DebugLog;
 
 public class AndroidUnitTest extends InstrumentationTestCase {
     public void test1(){
-        DebugLog.e("test1");
+        DebugLog.e("test221");
     }
 }
