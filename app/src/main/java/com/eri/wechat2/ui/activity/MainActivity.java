@@ -9,6 +9,8 @@ import com.eri.wechat2.R;
 import com.eri.wechat2.task.AsyncLoadingTask;
 import com.eri.wechat2.ui.activity.base.BaseActivity;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 
 public class MainActivity extends BaseActivity {
@@ -27,9 +29,15 @@ public class MainActivity extends BaseActivity {
 
     private void initView(){
         ImageView iv = (ImageView)findViewById(R.id.iv_image);
-        Glide.with(this)
-                .load("http://inthecheesefactory.com/uploads/source/nestedfragment/fragments.png")
-                .into(iv);
+//        Glide.with(this)
+//                .load("http://inthecheesefactory.com/uploads/source/nestedfragment/fragments.png")
+//                .into(iv);
+//        Glide.with(this).load(R.drawable.dialog_loading_img)
+//                .bitmapTransform(new BlurTransformation((Context) this, 25), new CropCircleTransformation((Context) this))
+//                .into(iv);
+//        Glide.with(this).load(R.drawable.iv_image)
+//                .bitmapTransform(new BlurTransformation(this))
+//                .into(iv);
     }
     private void initData(){
         showToast("56666....");
