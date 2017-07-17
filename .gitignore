@@ -61,3 +61,4 @@ freeline_project_description.json
 WeChat1.iml
 app/app.iml
 app/build/
+!/local.properties
