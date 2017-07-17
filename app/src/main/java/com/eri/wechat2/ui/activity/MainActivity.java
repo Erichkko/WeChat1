@@ -2,12 +2,12 @@ package com.eri.wechat2.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.eri.wechat2.R;
 import com.eri.wechat2.task.AsyncLoadingTask;
 import com.eri.wechat2.ui.activity.base.BaseActivity;
-import com.eri.wechat2.utils.DebugLog;
-import com.eri.wechat2.utils.HttpUtil;
 
 
 
@@ -21,9 +21,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        initView();
         initData();
     }
 
+    private void initView(){
+        ImageView iv = (ImageView)findViewById(R.id.iv_image);
+        Glide.with(this)
+                .load("http://inthecheesefactory.com/uploads/source/nestedfragment/fragments.png")
+                .into(iv);
+    }
     private void initData(){
         showToast("56666....");
         final String url = "http://qpi.zhenghongwy.com:5095/qpi/rest/ownerDynamicsInfo/getDynamicsList?pageNum=1&perSize=5&userId=95327&projectId=7";
@@ -35,13 +42,7 @@ public class MainActivity extends BaseActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                HttpUtil httpUtil = new HttpUtil();
-                try {
-                    String jsonData = httpUtil.getStringDataOfGet(url);
-                    DebugLog.json(jsonData);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
                 return null;
             }
 
