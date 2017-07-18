@@ -1,67 +1,73 @@
 package com.eri.wechat2.ui.activity;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTabHost;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.eri.wechat2.R;
-import com.eri.wechat2.task.AsyncLoadingTask;
 import com.eri.wechat2.ui.activity.base.BaseActivity;
-
-import jp.wasabeef.glide.transformations.BlurTransformation;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import com.eri.wechat2.ui.fragment.Fragment1;
+import com.eri.wechat2.ui.fragment.Fragment2;
+import com.eri.wechat2.ui.fragment.Fragment3;
+import com.eri.wechat2.ui.fragment.Fragment4;
 
 
 public class MainActivity extends BaseActivity {
+
+
+    private FragmentTabHost mTabHost;
+    private LayoutInflater mLayoutInflater;
+    private Class mFragmentArray[] = { Fragment1.class, Fragment2.class, Fragment3.class,
+            Fragment4.class };
+    private int mImageViewArray[] = { R.drawable.dialog_loading_img, R.drawable.dialog_loading_img,
+            R.drawable.dialog_loading_img,R.drawable.dialog_loading_img };
+    private int mTextviewArray[] = { R.string.tab_1_title, R.string.tab_2_title, R.string.tab_3_title,
+            R.string.tab_4_title };
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
         setContentView(R.layout.activity_main);
+        initTabHost();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        initView();
-        initData();
+    protected void initFindViewById() {
+
     }
 
-    private void initView(){
-        ImageView iv = (ImageView)findViewById(R.id.iv_image);
-//        Glide.with(this)
-//                .load("http://inthecheesefactory.com/uploads/source/nestedfragment/fragments.png")
-//                .into(iv);
-//        Glide.with(this).load(R.drawable.dialog_loading_img)
-//                .bitmapTransform(new BlurTransformation((Context) this, 25), new CropCircleTransformation((Context) this))
-//                .into(iv);
-//        Glide.with(this).load(R.drawable.iv_image)
-//                .bitmapTransform(new BlurTransformation(this))
-//                .into(iv);
+    @Override
+    protected void initData() {
+
     }
-    private void initData(){
-        showToast("56666....");
-        final String url = "http://qpi.zhenghongwy.com:5095/qpi/rest/ownerDynamicsInfo/getDynamicsList?pageNum=1&perSize=5&userId=95327&projectId=7";
-        AsyncLoadingTask<Void, Void, Integer> task = new AsyncLoadingTask<Void,Void,Integer>(this){
-            @Override
-            protected Integer doInBackground(Void... params) {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
-                return null;
-            }
+    @Override
+    protected void initEvent() {
 
-            @Override
-            protected void onPostExecute(Integer integer) {
-                super.onPostExecute(integer);
-                showToast("success....");
-            }
+    }
 
-        };
-        task.setMessage("666");
-        task.execute();
+    private void initTabHost(){
+        mLayoutInflater = LayoutInflater.from(this);
+        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+        mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+        int count = mFragmentArray.length;
+
+        for (int i = 0; i < count; i++) {
+            TabHost.TabSpec tabSpec = mTabHost.newTabSpec(getString(mTextviewArray[i]));
+            tabSpec.setIndicator(getTabItemView(i));
+            mTabHost.addTab(tabSpec, mFragmentArray[i], null);
+//            mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.homepage_selected_bg);
+        }
+    }
+    private View getTabItemView(int index) {
+        View view = mLayoutInflater.inflate(R.layout.tab_item_view, null);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageview);
+        imageView.setBackgroundResource(mImageViewArray[index]);
+        TextView textView = (TextView) view.findViewById(R.id.textView);
+        textView.setText(mTextviewArray[index]);
+        return view;
     }
 }
