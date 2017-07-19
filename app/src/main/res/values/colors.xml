@@ -6,6 +6,110 @@
 
     <color name="bg_color">#f3f3f3</color>
     <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
+
+    <color name="main_text_color">#e87f30</color>
+    <color name="darker_gray">#C1C1C6</color>
+    <color name="shap_content_click_color">#CCC1C1C6</color>
+    <color name="class_bg_28">#f5f5f5</color>
+    <color name="list_devider_color">#fff2f2f2</color>
+    <color name="default_circle_indicator_page_color">#ffffff</color>
+    <color name="default_circle_indecator_stroke_color">#777777</color>
+    <color name="default_circle_indicator_fill_color">#0033ff</color>
+    <color name="darkgray3">#ff505050</color>
+    <color name="btn_bg_color_yellow">#ffd109</color>
+    <color name="btn_bg_color_green">#62cd01</color>
+
+    <item name="darkgray" type="color">@*android:color/darker_gray</item>
+
+    <color name="color_edit_text_hint">#ffcccccc</color>
+    <color name="red">#FF0000</color>
+    <color name="black">#ff000000</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="color_ee4136">#ffee4136</color>
+    <color name="normal_text_color">#ff353535</color>
+    <color name="light_text_color">#ffd7d7d7</color>
+    <color name="footer_text_color">#ff7f7f7f</color>
+    <color name="blue">#ff0f81d9</color>
+    <color name="common_title_bg">#ffffff</color>
+    <color name="divider_bg">#E4E4E4</color>
+    <color name="bg_full_image">#ff000000</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="item_frame_color">#CBCBCB</color>
+    <color name="item_click_color">#F2F2F2</color>
+    <color name="tab_tv_click_color">#C73854</color>
+    <color name="buying_first_title_color">#EC7B16</color>
+    <color name="classify_list_view_selected_bg_color">#D7D7D7</color>
+    <color name="classify_list_view_bg_color">#E4E4E4</color>
+    <color name="classify_list_view_text_color">#6D6D6D</color>
+    <color name="classify_listview_left_bg_color">#fbfbfb</color>
+    <color name="classify_listview_right_bg_color">#ffffff</color>
+    <color name="red_deep">#c73854</color>
+    <color name="orange">#ff6100</color>
+    <color name="lunbo_orange">#FF8200</color>
+    <color name="customer_bg">#c83a56</color>
+    <color name="gray_deep_text">#555555</color>
+    <color name="black_light">#262626</color>
+    <!-- 时间选择器 begin -->
+    <color name="deep_gray">#666666</color>
+    <color name="gray">#888888</color>
+    <color name="light_gray">#b3b3b3</color>
+    <color name="dark_orange">#c87000</color>
+    <color name="translucent_80_dark">#cc000000</color>
+    <color name="light_s_gray">#cccccc</color>
+    <color name="deep_s_gray">#454545</color>
+    <color name="deep_ss_gray">#333333</color>
+    <color name="split_line_gray">#B8B8B8</color>
+    <color name="picker_bar_bg">#F5F5F5</color>
+    <!-- 时间选择器 end -->
+    <!-- 深色dark -->
+    <color name="font_color_dark">#505050</color>
+    <color name="background_color_gray">#F3F3F3</color>
+    <!-- 灰色gray -->
+    <color name="font_color_gray">#808080</color>
+    <color name="font_color_orange">#e0000000</color>
+    <!-- 淡色light -->
+    <color name="font_color_light">#c2c2c2</color>
+    <color name="bottom_bar_text_color">#727171</color>
+    <color name="button_red">#ec4411</color>
+    <color name="orange_darker">#ffc63753</color>
+    <color name="red_dark">#ffc63753</color>
+    <color name="half_transparent">#e0000000</color>
+    <color name="info_or">#ffa147</color>
+    <color name="info_per">#ff4419</color>
+    <color name="visitor_bg">#f6911d</color>
+    <color name="slight_gray">#eff1f0</color>
+    <color name="dandan_gray">#c2c2c2</color>
+    <!-- 团购 -->
+    <color name="green">#009900</color>
+    <!-- 我的优惠券 -->
+    <color name="red_light">#77625e</color>
+    <color name="blue_light">#5aafc7</color>
+    <color name="pink_light">#9d87bf</color>
+    <color name="green_light">#5ec187</color>
+    <!-- 现金券 -->
+    <color name="xianjin_nor">#e86c6c</color>
+    <color name="xianjin_click">#d66464</color>
+    <!-- 买赠券 -->
+    <color name="maizeng_nor">#7abe8b</color>
+    <color name="maizeng_click">#70af80</color>
+    <!-- 满减券 -->
+    <color name="manjian_nor">#998bc5</color>
+    <color name="manjian_click">#8d80b6</color>
+    <!-- 折扣券 -->
+    <color name="zhekou_nor">#74aecb</color>
+    <color name="zhekou_click">#6ba0bb</color>
+    <!-- 福利券 -->
+    <color name="fuli_nor">#7883DD</color>
+    <color name="fuli_click">#7883DD</color>
+    <!-- 二维码 -->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+    <color name="all_light_word_color">#a7a7a7</color>
+    <color name="all_blue_color">#2698f0</color>
+
 </resources>
