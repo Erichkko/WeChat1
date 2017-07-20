@@ -19,6 +19,13 @@ public class LoadingDialog extends Dialog{
     public LoadingDialog(Context context, int themeResId) {
         super(context, themeResId);
     }
+    public static LoadingDialog getDefaultLoading(Context context){
+        LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(context)
+                .setMessage("loading...")
+                .setCancelable(false)
+                .setCancelOutside(false);
+        return loadBuilder.create();
+    }
 
     public static class Builder{
 

@@ -46,6 +46,11 @@ public class HttpURLConnectionUtils {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 final String response = post(url, params, null);
                 handler.post(new Runnable() {
                     @Override
@@ -106,6 +111,7 @@ public class HttpURLConnectionUtils {
      */
     public static void doGet(final String url, final HttpResponseCallBack callback) {
         final Handler handler = new Handler();
+        callback.onStart();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -118,6 +124,7 @@ public class HttpURLConnectionUtils {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        callback.onFinished();
                         if(response == null) {
                             callback.onFailure();
                             return;
