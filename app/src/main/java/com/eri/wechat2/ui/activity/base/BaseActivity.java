@@ -15,12 +15,14 @@ import android.widget.Toast;
 import com.eri.wechat2.R;
 import com.eri.wechat2.ui.dialog.loading.FlippingLoadingDialog;
 import com.eri.wechat2.ui.dialog.loading.HandyTextView;
+import com.eri.wechat2.ui.view.SwipeLayout;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class BaseActivity extends AppCompatActivity {
+    private SwipeLayout swipeLayout;
         /**
          * 记录处于前台的Activity
          */
@@ -39,11 +41,37 @@ public abstract class BaseActivity extends AppCompatActivity {
             initEvent();
 
             // initActionBar();
+            initSwipView();
         }
 
+    private void initSwipView() {
+        swipeLayout = new SwipeLayout(this);
+        swipeLayout.setSwipeAnyWhere(false);
+        swipeLayout.setSwipeEnabled(isSwipeEnabled());
+    }
+    protected boolean isSwipeEnabled() {
+        return false;
+    }
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        swipeLayout.replaceLayer(this);
+    }
+    @Override
+    public void finish() {
+        if (!swipeLayout.isSwipeFinished()) {
+            swipeLayout.cancelPotentialAnimation();
+        }
+        super.finish();
+        if (isTaskRoot()) {
+            overridePendingTransition(0, R.anim.anit_out_left_right);
+        } else {
+            overridePendingTransition(R.anim.anim_in_left_right,R.anim.anit_out_left_right);
 
+        }
+    }
 
-        @Override
+    @Override
         protected void onResume() {
             mForegroundActivity = this;
             super.onResume();
@@ -59,12 +87,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void startActivity(Intent intent) {
         super.startActivity(intent);
         overridePendingTransition(R.anim.anmi_in_right_left,R.anim.anmi_out_right_left);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.anim_in_left_right,R.anim.anit_out_left_right);
     }
 
     @Override

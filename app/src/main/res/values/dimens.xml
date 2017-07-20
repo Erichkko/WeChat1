@@ -1,4 +1,4 @@
 <resources>
     <integer name="duration_anim">300</integer>
-
+    <dimen name="padding_status_bar_height">0dp</dimen>
 </resources>
