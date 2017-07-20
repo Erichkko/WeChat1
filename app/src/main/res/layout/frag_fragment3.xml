@@ -10,12 +10,42 @@
     android:text="fragment3...."/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <Button
             android:id="@+id/bt_swip_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="华东返回测试"/>
+            android:text="滑动返回测试"/>
+        <Button
+            android:id="@+id/bt_bt2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="华东返回测试2"/>
+        <Button
+            android:id="@+id/bt_bt3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="华东返回测试3"/>
+        <Button
+            android:id="@+id/bt_bt4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="华东返回测试4"/>
+        <Button
+            android:id="@+id/bt_bt5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="华东返回测试5"/>
+        <Button
+            android:id="@+id/bt_bt6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="华东返回测试6"/>
+        <Button
+            android:id="@+id/bt_bt7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="华东返回测试7"/>
     </LinearLayout>
 </LinearLayout>

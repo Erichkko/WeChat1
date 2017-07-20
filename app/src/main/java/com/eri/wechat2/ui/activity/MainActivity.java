@@ -14,6 +14,7 @@ import com.eri.wechat2.ui.fragment.Fragment2;
 import com.eri.wechat2.ui.fragment.Fragment3;
 import com.eri.wechat2.ui.fragment.Fragment4;
 import com.eri.wechat2.ui.fragment.Fragment5;
+import com.eri.wechat2.utils.UIUtils;
 
 
 public class MainActivity extends BaseActivity {
@@ -26,7 +27,7 @@ public class MainActivity extends BaseActivity {
     private int mImageViewArray[] = { R.drawable.bg_tabbar_home_selector, R.drawable.bg_tabbar_message_selector,
             R.drawable.bg_tabbar_profile_selector,R.drawable.bg_tabbar_discover_selector,R.drawable.bg_tabbar_fav_selector  };
     private int mTextviewArray[] = { R.string.tab_1_title, R.string.tab_2_title, R.string.tab_3_title,
-            R.string.tab_4_title , R.string.tab_4_title };
+            R.string.tab_4_title , R.string.tab_5_title };
 
     @Override
     protected void initView() {
@@ -68,7 +69,7 @@ public class MainActivity extends BaseActivity {
         imageView.setBackgroundResource(mImageViewArray[index]);
         TextView textView = (TextView) view.findViewById(R.id.textView);
         textView.setText(mTextviewArray[index]);
-        textView.setTextColor(getResources().getColorStateList(
+        textView.setTextColor(UIUtils.getColorStateList(
                 R.color.tab_selector_tv_color));
         return view;
     }

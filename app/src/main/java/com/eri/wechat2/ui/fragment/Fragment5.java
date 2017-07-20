@@ -23,7 +23,7 @@ import java.util.Map;
 public class Fragment5 extends BaseFragment{
     @Override
     public View initView(LayoutInflater inflater) {
-        return inflater.inflate(R.layout.frag_fragment4,null);
+        return inflater.inflate(R.layout.frag_fragment5,null);
     }
 
     @Override
