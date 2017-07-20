@@ -1,13 +1,11 @@
 package com.eri.wechat2.ui.activity;
 
-import android.graphics.Color;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eri.wechat2.R;
 import com.eri.wechat2.ui.activity.base.BaseActivity;

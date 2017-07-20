@@ -1,7 +1,14 @@
 package com.eri.wechat2.utils;
 
 import android.content.Context;
- import android.widget.Toast;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.eri.wechat2.MsgApplication;
+import com.eri.wechat2.R;
 
 /**
  * Toast统一管理类
@@ -13,74 +20,40 @@ public class T {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    public static boolean isShow = true;
-
-    /**
-     * 短时间显示Toast
-     *
-     * @param context
-     * @param message
-     */
-    public static void showShort(Context context, CharSequence message) {
-        if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    public static Context getContext() {
+        return MsgApplication.getInstance();
+    }
+    public static void showShort(CharSequence message) {
+        showToast(message.toString());
     }
 
-    /**
-     * 短时间显示Toast
-     *
-     * @param context
-     * @param message
-     */
-    public static void showShort(Context context, int message) {
-        if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    public static void showShort(int msgId) {
+        showToast(msgId);
     }
 
-    /**
-     * 长时间显示Toast
-     *
-     * @param context
-     * @param message
-     */
-    public static void showLong(Context context, CharSequence message) {
-        if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    /** 显示自定义Toast提示(来自res) **/
+    private static void showToast(int resId) {
+        View toastRoot = LayoutInflater.from(getContext()).inflate(
+                R.layout.app_toast, null);
+        ((TextView) toastRoot.findViewById(R.id.toast_text)).setText(getContext().getString(resId));
+        Toast toast = new Toast(getContext());
+        toast.setGravity(Gravity.BOTTOM, 0, 100);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(toastRoot);
+        toast.show();
     }
 
-    /**
-     * 长时间显示Toast
-     *
-     * @param context
-     * @param message
-     */
-    public static void showLong(Context context, int message) {
-        if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    /** 显示自定义Toast提示(来自String) **/
+    private static void showToast(String text) {
+        View toastRoot = LayoutInflater.from(getContext()).inflate(
+                R.layout.app_toast, null);
+        ((TextView) toastRoot.findViewById(R.id.toast_text)).setText(text);
+        Toast toast = new Toast(getContext());
+        toast.setGravity(Gravity.BOTTOM, 0, 100);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(toastRoot);
+        toast.show();
     }
 
-    /**
-     * 自定义显示Toast时间
-     *
-     * @param context
-     * @param message
-     * @param duration
-     */
-    public static void show(Context context, CharSequence message, int duration) {
-        if (isShow)
-            Toast.makeText(context, message, duration).show();
-    }
-
-    /**
-     * 自定义显示Toast时间
-     *
-     * @param context
-     * @param message
-     * @param duration
-     */
-    public static void show(Context context, int message, int duration) {
-        if (isShow)
-            Toast.makeText(context, message, duration).show();
-    }
 
 }

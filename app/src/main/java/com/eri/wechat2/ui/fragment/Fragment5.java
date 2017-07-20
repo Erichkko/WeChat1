@@ -9,6 +9,7 @@ import com.eri.wechat2.ui.dialog.LoadingDialog;
 import com.eri.wechat2.ui.fragment.base.BaseFragment;
 import com.eri.wechat2.utils.DebugLog;
 import com.eri.wechat2.utils.HttpURLConnectionUtils;
+import com.eri.wechat2.utils.T;
 
 import org.json.JSONObject;
 
@@ -78,6 +79,7 @@ public class Fragment5 extends BaseFragment{
             LoadingDialog loadingDialog;
             @Override
             public void onSuccess(JSONObject response) {
+                T.showShort("请求success...");
                 DebugLog.e("--------------onSuccess------------------");
                 DebugLog.json(response.toString());
             }

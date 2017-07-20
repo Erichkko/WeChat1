@@ -50,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         swipeLayout.setSwipeEnabled(isSwipeEnabled());
     }
     protected boolean isSwipeEnabled() {
-        return false;
+        return true;
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
