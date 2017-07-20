@@ -24,7 +24,6 @@ public class Fragment5 extends BaseFragment{
 
     @Override
     protected void initFindViewById(View view) {
-
     }
 
     @Override
