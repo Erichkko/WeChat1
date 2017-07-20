@@ -4,7 +4,10 @@ package com.eri.wechat2.ui.fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.eri.wechat2.InterfaceApp;
 import com.eri.wechat2.R;
+import com.eri.wechat2.ResponseBase;
+import com.eri.wechat2.storage.ServiceStorage;
 import com.eri.wechat2.ui.dialog.LoadingDialog;
 import com.eri.wechat2.ui.fragment.base.BaseFragment;
 import com.eri.wechat2.utils.DebugLog;
@@ -36,7 +39,18 @@ public class Fragment5 extends BaseFragment{
     public void onResume() {
         super.onResume();
 //        testHttpRequestGet();
-        testHttpRequestPost();
+          testHttpRequestPost();
+        testLogin();
+    }
+
+    private void testLogin() {
+        ServiceStorage.getInstance(mActivity).regist(null, new InterfaceApp.ResponseListener<ResponseBase>() {
+            @Override
+            public void onResponse(ResponseBase response) {
+
+            }
+        });
+
     }
 
     private void testHttpRequestGet(){
