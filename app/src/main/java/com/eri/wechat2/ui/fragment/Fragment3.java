@@ -38,6 +38,7 @@ public class Fragment3 extends BaseFragment{
         bt_bt5 = (Button)view.findViewById(R.id.bt_bt5);
         bt_bt6 = (Button)view.findViewById(R.id.bt_bt6);
         bt_bt7 = (Button)view.findViewById(R.id.bt_bt7);
+
 //        bt_bt8 = (Button)view.findViewById(R.id.bt_bt8);
 //        bt_bt9 = (Button)view.findViewById(R.id.bt_bt9);
     }
