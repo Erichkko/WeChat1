@@ -28,7 +28,7 @@ public class UIUtils {
 	}
 
 	/** 获取资源 */
-	public static Resources getResources() {
+	private static Resources getResources() {
 		return getContext().getResources();
 	}
 
