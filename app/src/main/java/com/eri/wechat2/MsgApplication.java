@@ -18,6 +18,7 @@ public class MsgApplication extends Application {
         super.onCreate();
         instance = this;
         initCrashHandler();
+        BackgroundManager.init(this);
     }
     private void initCrashHandler(){
         //1,获取异常捕获日志

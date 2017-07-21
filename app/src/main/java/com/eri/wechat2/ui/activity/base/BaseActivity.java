@@ -1,49 +1,64 @@
 package com.eri.wechat2.ui.activity.base;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
 
-import android.widget.Toast;
-
+import com.eri.wechat2.BackgroundManager;
 import com.eri.wechat2.R;
-import com.eri.wechat2.ui.dialog.loading.FlippingLoadingDialog;
-import com.eri.wechat2.ui.dialog.loading.HandyTextView;
-import com.eri.wechat2.ui.view.SwipeLayout;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.eri.wechat2.ui.view.SwipeLayout;
+import com.eri.wechat2.utils.DebugLog;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private SwipeLayout swipeLayout;
-        /**
-         * 记录处于前台的Activity
-         */
-        private static BaseActivity mForegroundActivity = null;
-        /**
-         * 记录所有活动的Activity
-         */
-        private static final List<BaseActivity> mActivities = new LinkedList<BaseActivity>();
+    public static boolean isForeground = false;
+    private Handler handler = new Handler();
+    private ConnectionRunnable mConnectionRunnable = new ConnectionRunnable();
+
+    private BackgroundManager.AppLifecycleListener appLifecycleListener = new BackgroundManager.AppLifecycleListener() {
 
         @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            initView();
-            initFindViewById();
-            initData();
-            initEvent();
-
-            // initActionBar();
-            initSwipView();
+        public void onBecameForeground() {
+            isForeground = true;
+            initForeground();
         }
 
+        @Override
+        public void onBecameBackground() {
+            isForeground = false;
+            handler.post(mConnectionRunnable);
+        }
+    };
+
+    private void initForeground() {
+        DebugLog.d(BaseActivity.this.getClass().getSimpleName() + ":App in initForeground!");
+    }
+
+    private  class ConnectionRunnable implements Runnable {
+        @Override
+        public void run() {
+            DebugLog.d(BaseActivity.this.getClass().getSimpleName() + ":App in background!");
+        }
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initView();
+        initFindViewById();
+        initData();
+        initEvent();
+        initSwipView();
+        initAppLifeCycle();
+    }
+    private void initAppLifeCycle(){
+        if (BackgroundManager.getInstance() != null) {
+            BackgroundManager.getInstance().registerListener(appLifecycleListener);
+        }
+    }
     private void initSwipView() {
         swipeLayout = new SwipeLayout(this);
         swipeLayout.setSwipeAnyWhere(false);
@@ -72,16 +87,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-        protected void onResume() {
-            mForegroundActivity = this;
-            super.onResume();
-        }
+    protected void onResume() {
+        super.onResume();
+    }
 
-        @Override
-        protected void onPause() {
-            mForegroundActivity = null;
-            super.onPause();
-        }
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
     @Override
     public void startActivity(Intent intent) {
@@ -102,73 +115,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         abstract protected void initEvent();
 
-        protected void initActionBar() {
-
-        }
-
-        /**
-         * 关闭所有Activity
-         */
-        public static void finishAll() {
-            List<BaseActivity> copy;
-            synchronized (mActivities) {
-                copy = new ArrayList<BaseActivity>(mActivities);
-            }
-            for (BaseActivity activity : copy) {
-                activity.finish();
-            }
-        }
-
-        /**
-         * 关闭所有Activity，除了参数传递的Activity
-         */
-        public static void finishAll(BaseActivity except) {
-            List<BaseActivity> copy;
-            synchronized (mActivities) {
-                copy = new ArrayList<BaseActivity>(mActivities);
-            }
-            for (BaseActivity activity : copy) {
-                if (activity != except)
-                    activity.finish();
-            }
-        }
-
-        /**
-         * 是否有启动的Activity
-         */
-        public static boolean hasActivity() {
-            return mActivities.size() > 0;
-        }
-
-        /**
-         * 获取当前处于前台的activity
-         */
-        public static BaseActivity getForegroundActivity() {
-            return mForegroundActivity;
-        }
-
-        /**
-         * 获取当前处于栈顶的activity，无论其是否处于前台
-         */
-        public static BaseActivity getCurrentActivity() {
-            List<BaseActivity> copy;
-            synchronized (mActivities) {
-                copy = new ArrayList<BaseActivity>(mActivities);
-            }
-            if (copy.size() > 0) {
-                return copy.get(copy.size() - 1);
-            }
-            return null;
-        }
-
-
-        /**
-         * 退出应用
-         */
-        public void exitApp() {
-            finishAll();
-            android.os.Process.killProcess(android.os.Process.myPid());
-        }
     }
 
 

@@ -24,8 +24,6 @@ import java.util.Map;
 /**
  * UncaughtException处理类,当程序发生Uncaught异常的时候,有该类来接管程序,并记录发送错误报告.
  * 
- * @author ebeitech
- * 
  */
 public class CrashHandler implements UncaughtExceptionHandler {
 
@@ -41,7 +39,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	private Map<String, String> infos = new HashMap<String, String>();
 
 	// 用于格式化日期,作为日志文件名的一部分
-	private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+	private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/** 保证只有一个CrashHandler实例 */
 	private CrashHandler() {
@@ -178,7 +176,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		String result = writer.toString();
 		sb.append(result + "\n");
 		try {
-			String fileName = "crash.log";
+			String fileName = time +" crash.log";
 			if (Environment.getExternalStorageState().equals(
 					Environment.MEDIA_MOUNTED)) {
 				String path = FILE_DIR + "/crash/";
