@@ -35,6 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     };
 
     private void initForeground() {
+        handler.removeCallbacks(mConnectionRunnable);
         DebugLog.d(BaseActivity.this.getClass().getSimpleName() + ":App in initForeground!");
     }
 
