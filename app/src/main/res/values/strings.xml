@@ -7,4 +7,6 @@
     <string name="tab_4_title">WeChat4</string>
     <string name="tab_5_title">WeChat5</string>
 
+    <string name="load_fail">加载失败!</string>
+
 </resources>

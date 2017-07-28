@@ -9,6 +9,8 @@ import android.widget.Button;
 import com.eri.wechat2.R;
 import com.eri.wechat2.ui.activity.SegmentActivity;
 import com.eri.wechat2.ui.activity.Test1Activity;
+import com.eri.wechat2.ui.activity.WebViewActivity;
+import com.eri.wechat2.ui.constant.Constants;
 import com.eri.wechat2.ui.fragment.base.BaseFragment;
 import com.eri.wechat2.utils.T;
 
@@ -75,6 +77,8 @@ public class Fragment3 extends BaseFragment{
                     T.showShort("2");
                     break;
                 case R.id.bt_bt3:
+                    intent.setClass(mActivity, WebViewActivity.class);
+                    intent.putExtra(Constants.EXTRA_PREFIX,"http://www.baidu.com");
                     T.showShort("3");
                     break;
                 case R.id.bt_bt4:

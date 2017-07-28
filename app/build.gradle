@@ -49,5 +49,5 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.2'
     compile project(':pullToRefresh')
     compile 'info.hoang8f:android-segmented:1.0.6'
-
+    compile files('libs/tbs_sdk_x5.jar')
 }
