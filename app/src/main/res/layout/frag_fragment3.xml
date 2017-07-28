@@ -21,12 +21,12 @@
             android:id="@+id/bt_bt2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="华东返回测试2"/>
+            android:text="segment切换"/>
         <Button
             android:id="@+id/bt_bt3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="华东返回测试3"/>
+            android:text="X5内核webview的使用"/>
         <Button
             android:id="@+id/bt_bt4"
             android:layout_width="wrap_content"
