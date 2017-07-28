@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.eri.wechat2.R;
+import com.eri.wechat2.ui.activity.SegmentActivity;
 import com.eri.wechat2.ui.activity.Test1Activity;
 import com.eri.wechat2.ui.fragment.base.BaseFragment;
 import com.eri.wechat2.utils.T;
@@ -64,13 +65,13 @@ public class Fragment3 extends BaseFragment{
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            Intent intent = new Intent();
             switch (id){
                 case R.id.bt_swip_back:
-                    Intent intent = new Intent();
                     intent.setClass(mActivity, Test1Activity.class);
-                    startActivity(intent);
                     break;
                 case R.id.bt_bt2:
+                    intent.setClass(mActivity, SegmentActivity.class);
                     T.showShort("2");
                     break;
                 case R.id.bt_bt3:
@@ -92,6 +93,7 @@ public class Fragment3 extends BaseFragment{
                     break;
 
             }
+            startActivity(intent);
         }
     }
 }

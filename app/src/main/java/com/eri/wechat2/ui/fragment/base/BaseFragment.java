@@ -13,6 +13,7 @@ import com.eri.wechat2.R;
 public abstract class BaseFragment extends Fragment {
 
     public FragmentActivity mActivity;
+    private View rootView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,10 +23,17 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mActivity = getActivity();
-        View view = initView(inflater);
-        initFindViewById(view);
-
-        return view;
+        if (rootView == null) {
+            rootView = initView(inflater);
+            initFindViewById(rootView);
+        }
+        // 缓存的rootView需要判断是否已经被加过parent，
+        // 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+        return rootView;
     }
 
 

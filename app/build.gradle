@@ -16,6 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            resources.srcDirs = ['src']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+
+        }
+
+        instrumentTest.setRoot('tests')
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
 }
 repositories {
     jcenter()
@@ -26,7 +38,7 @@ ext {
 
 }
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "com.android.support:support-v4:${googleSupportLibVersion}"
     compile "com.android.support:recyclerview-v7:${googleSupportLibVersion}"
     compile "com.android.support:appcompat-v7:${googleSupportLibVersion}"
@@ -36,5 +48,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.2'
     compile project(':pullToRefresh')
+    compile 'info.hoang8f:android-segmented:1.0.6'
 
 }
