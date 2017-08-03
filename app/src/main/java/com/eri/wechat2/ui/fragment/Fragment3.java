@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.eri.wechat2.R;
+import com.eri.wechat2.ui.activity.BannerActivity;
 import com.eri.wechat2.ui.activity.SegmentActivity;
 import com.eri.wechat2.ui.activity.Test1Activity;
 import com.eri.wechat2.ui.activity.WebViewActivity;
@@ -82,6 +83,7 @@ public class Fragment3 extends BaseFragment{
                     T.showShort("3");
                     break;
                 case R.id.bt_bt4:
+                    intent.setClass(mActivity, BannerActivity.class);
                     T.showShort("4");
                     break;
                 case R.id.bt_bt5:

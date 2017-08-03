@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/blue"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <!-- 设置普通指示器 -->
+    <com.eri.wechat2.ui.view.bannerview.CustomBanner
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellow"
+        app:indicatorStyle="ORDINARY"
+        app:indicatorGravity="RIGHT"
+        app:indicatorSelectRes="@drawable/shape_point_select"
+        app:indicatorUnSelectRes="@drawable/shape_point_unselect"
+        app:indicatorInterval="5dp"/>
+
+    <!-- 设置数字指示器 -->
+    <!--<com.eri.wechat2.ui.view.bannerview.CustomBanner-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/banner"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="180dp"-->
+    <!--app:indicatorStyle="NUMBER"-->
+    <!--app:indicatorGravity="RIGHT"/>-->
+
+    <!-- 设置没有指示器-->
+    <!--<com.eri.wechat2.ui.view.bannerview.CustomBanner-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/banner"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="180dp"-->
+    <!--app:indicatorStyle="NONE"/>-->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:text="测试标题1"
+            android:gravity="center_vertical"
+            android:background="@color/translucent_80_dark"
+            android:textColor="@color/red"/>
+    </RelativeLayout>
+</RelativeLayout>
